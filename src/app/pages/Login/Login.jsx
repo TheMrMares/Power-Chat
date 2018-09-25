@@ -5,6 +5,7 @@ import {
   withStyles,
 } from '@material-ui/core'
 import styles from './Login.style'
+import abc from './Login.module.scss'
 
 export class Login extends React.Component {
   static propTypes = {
@@ -18,6 +19,7 @@ export class Login extends React.Component {
         <Paper className={classes.paper}>
           login
         </Paper>
+        <p className={abc.testClass}>XDD</p>
       </div>
     )
   }
