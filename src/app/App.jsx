@@ -7,18 +7,14 @@ import {
   Switch,
   withRouter,
 } from 'react-router-dom'
-import { withStyles, CircularProgress } from '@material-ui/core'
 import { connect } from 'react-redux'
-import withRoot from '../utils/withRoot'
 import firebase from '../firebase'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Layout from './layout'
-import styles from './App.styles'
 
 export class App extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     getClearSignedUser: PropTypes.func,
     getUpdateSignedUser: PropTypes.func,
   }
@@ -49,10 +45,9 @@ export class App extends React.Component {
   }
 
   render() {
-    const { classes } = this.props
     const { loading } = this.state
     return (
-      <div className={classes.root}>
+      <div>
         {!loading && (
           firebase.auth().currenUser
             ? <Switch>
@@ -65,7 +60,7 @@ export class App extends React.Component {
                 <Redirect to="/login" />
               </Switch>
         )}
-        {loading && <CircularProgress className={classes.progress} />}
+        {loading && <p>Loading...</p>}
       </div>
     )
   }
@@ -83,4 +78,4 @@ const mapDispatch = ({
 })
 
 
-export default withRouter(connect(mapState, mapDispatch)(withRoot(withStyles(styles)(App))))
+export default withRouter(connect(mapState, mapDispatch)(App))
