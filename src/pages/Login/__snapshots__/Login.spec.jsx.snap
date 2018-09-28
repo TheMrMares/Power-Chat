@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login should render as expected 1`] = `
+<div>
+  <form>
+    <h1>
+      Login
+    </h1>
+    <h2>
+      Email
+    </h2>
+    <input
+      name="loginEmail"
+      onChange={[Function]}
+      placeholder="Your email"
+      type="email"
+    />
+    <h2>
+      Password
+    </h2>
+    <input
+      name="loginPassword"
+      onChange={[Function]}
+      placeholder="Your password"
+      type="password"
+    />
+    <Button
+      onClick={[Function]}
+      size="normal"
+      uppercase={true}
+    >
+      login
+    </Button>
+    <p>
+      Haven't you got an account?
+    </p>
+    <Link
+      replace={false}
+      to="/register"
+    >
+      Sign up.
+    </Link>
+  </form>
+</div>
+`;

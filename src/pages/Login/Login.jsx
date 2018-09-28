@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styles from './Login.module.scss'
+import { Link } from 'react-router-dom'
 import Button from '../../components/Button'
 import firebase from '../../firebase'
+import styles from './Login.module.scss'
 
 export class Login extends React.Component {
   static propTypes = {
@@ -57,6 +58,8 @@ export class Login extends React.Component {
           >
             login
           </Button>
+          <p>Haven&#39;t you got an account?</p>
+          <Link to="/register">Sign up.</Link>
         </form>
       </div>
     )

@@ -1,0 +1,81 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Register should render as expected 1`] = `
+<div>
+  <form>
+    <h1>
+      Register
+    </h1>
+    <div>
+      <div>
+        <h2>
+          Email
+        </h2>
+        <input
+          name="registerEmail"
+          placeholder="Your email"
+          type="email"
+        />
+        <input
+          name="registerRepeatEmail"
+          placeholder="Repeat your email"
+          type="email"
+        />
+        <h2>
+          Nickname
+        </h2>
+        <input
+          name="registerNickname"
+          placeholder="Your nickname"
+          type="text"
+        />
+      </div>
+      <div>
+        <h2>
+          Personal
+        </h2>
+        <input
+          name="registerFirstname"
+          placeholder="Firstname"
+          type="text"
+        />
+        <input
+          name="registerSurname"
+          placeholder="Surname"
+          type="text"
+        />
+      </div>
+      <div>
+        <h2>
+          Password
+        </h2>
+        <input
+          name="registerPassword"
+          placeholder="Your password"
+          type="password"
+        />
+        <input
+          name="registerRepeatPassword"
+          placeholder="Repeat your password"
+          type="password"
+        />
+      </div>
+    </div>
+    <Button
+      size="normal"
+      uppercase={true}
+    >
+      register
+    </Button>
+    <p>
+      Have you already got an account?
+    </p>
+    <Link
+      replace={false}
+      to="/login"
+    >
+      Sign in.
+    </Link>
+  </form>
+</div>
+`;

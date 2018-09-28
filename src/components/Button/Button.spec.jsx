@@ -1,26 +1,17 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { Provider } from 'react-redux'
-import { init } from '@rematch/core'
-import { App } from './App'
-import models from './models'
-
-const store = init({
-  models,
-})
+import { Button } from './Button'
 
 const initPage = overrides => {
   const wrapper = shallow(
-  <Provider store={store}>
-    <App
+    <Button
       {...overrides}
     />
-  </Provider>
   )
   return { wrapper }
 }
 
-describe('App', () => {
+describe('Button', () => {
   it('should render as expected', () => {
     const { wrapper } = initPage()
     expect(wrapper).toMatchSnapshot()
