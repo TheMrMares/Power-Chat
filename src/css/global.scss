@@ -1,0 +1,47 @@
+@import './config.scss';
+@import './mixins.scss';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: url('../assets/images/nyc-original.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'BaiJamjuree', sans-serif;
+  color: $contrast-normal;
+};
+* {
+  box-sizing: border-box;
+  transition: 0.15s ease;
+}
+h1, h2, h3, h4, h5, h6 {
+  padding: 0;
+  margin: $spacing-unit * 1;
+  font-weight: normal;
+}
+h1 {
+  text-transform: uppercase;
+}
+button {
+  margin: $spacing-unit * 1;
+  font-family: 'BaiJamjuree', sans-serif;
+}
+input {
+  margin: $spacing-unit * 1;
+  padding: $spacing-unit * 0.5;
+  font-family: 'BaiJamjuree', sans-serif;
+  color: $contrast-normal;
+  font-size: 1em;
+}
+
+input[type=text], input[type=password], input[type=email] {
+  border: none;
+  border-bottom: 1px solid;
+  border-color: $primary-light;
+  outline: none;
+  background: none;
+  &:focus {
+    border-color: $special-normal;
+  }
+}

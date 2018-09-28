@@ -1,0 +1,19 @@
+//conf
+$darken-percent: 5%;
+$lighten-percent: 4%;
+
+//color
+$primary-normal: #0f0f0f;
+$primary-light: lighten($primary-normal, $lighten-percent);
+$primary-dark: darken($primary-normal, $darken-percent);
+
+$contrast-normal: #f8f8f8;
+$contrast-light: lighten($contrast-normal, $lighten-percent);
+$contrast-dark: darken($contrast-normal, $darken-percent);
+
+$special-normal: #edbb2d;
+$special-light: lighten($special-normal, $lighten-percent);
+$special-dark: darken($special-normal, $darken-percent);
+//spacing
+$spacing-unit: 10px;
+$spacing-radius: 3px;

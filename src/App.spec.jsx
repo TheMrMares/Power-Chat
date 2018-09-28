@@ -3,7 +3,7 @@ import { shallow } from 'enzyme'
 import { Provider } from 'react-redux'
 import { init } from '@rematch/core'
 import { App } from './App'
-import models from '../models'
+import models from './models'
 
 const store = init({
   models,

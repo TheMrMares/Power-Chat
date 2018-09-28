@@ -5,7 +5,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { init } from '@rematch/core'
 import models from './models'
 import './index.css'
-import App from './app'
+import App from './App'
 import registerServiceWorker from './registerServiceWorker'
 import document from './utils/document'
 

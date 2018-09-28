@@ -14,15 +14,16 @@ const auth = {
   },
   reducers: {
     updateUser(state, payload) {
-      const user = Immutable.fromJS(payload)
       return {
         ...state,
-        signedUser: user,
+        currentUser: Immutable.fromJS(payload),
+        isSigned: true,
       }
     },
   },
   state: {
-    user: Immutable.Map(),
+    currentUser: Immutable.Map(),
+    isSigned: false,
   },
 }
 

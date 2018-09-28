@@ -8,10 +8,11 @@ import {
   withRouter,
 } from 'react-router-dom'
 import { connect } from 'react-redux'
-import firebase from '../firebase'
+import firebase from './firebase'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Layout from './layout'
+import './css/global.scss'
 
 export class App extends React.Component {
   static propTypes = {
