@@ -9,8 +9,8 @@ exports[`Login should render as expected 1`] = `
     <h2>
       Email
     </h2>
-    <input
-      name="loginEmail"
+    <Input
+      id="loginEmail"
       onChange={[Function]}
       placeholder="Your email"
       type="email"
@@ -18,8 +18,8 @@ exports[`Login should render as expected 1`] = `
     <h2>
       Password
     </h2>
-    <input
-      name="loginPassword"
+    <Input
+      id="loginPassword"
       onChange={[Function]}
       placeholder="Your password"
       type="password"

@@ -1,7 +1,6 @@
 @import '../../css/config.scss';
 
 .button {
-  border: none;
   outline: none;
   padding: $spacing-unit * 1;
   font-size: 1em;
@@ -9,8 +8,15 @@
   background: $special-normal;
   box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2);
   color: $primary-normal;
+  border-left: 4px solid;
+  border-right: 4px solid;
+  border-top: none;
+  border-bottom: none;
+  border-color: $special-dark;
+  font-weight: 700;
   &:hover {
-    background: $special-dark;
+    background: $special-light;
+    border-color: $special-normal;
     box-shadow: 5px 5px 25px 0px rgba(0,0,0,0.3);
   }
 

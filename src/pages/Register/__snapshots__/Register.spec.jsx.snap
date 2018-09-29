@@ -11,37 +11,55 @@ exports[`Register should render as expected 1`] = `
         <h2>
           Email
         </h2>
-        <input
-          name="registerEmail"
-          placeholder="Your email"
+        <Input
+          error=""
+          id="registerEmail"
+          label="Email"
+          onChange={[Function]}
+          placeholder="example@domain.com"
           type="email"
+          value=""
         />
-        <input
-          name="registerRepeatEmail"
-          placeholder="Repeat your email"
+        <Input
+          error=""
+          id="registerRepeatEmail"
+          label="Repeat email"
+          onChange={[Function]}
+          placeholder="example@domain.com"
           type="email"
+          value=""
         />
         <h2>
-          Nickname
+          User
         </h2>
-        <input
-          name="registerNickname"
-          placeholder="Your nickname"
+        <Input
+          error=""
+          id="registerNickname"
+          label="Nickname"
+          onChange={[Function]}
+          placeholder="HappyNickname123"
           type="text"
+          value=""
         />
       </div>
       <div>
         <h2>
           Personal
         </h2>
-        <input
-          name="registerFirstname"
-          placeholder="Firstname"
+        <Input
+          error=""
+          id="registerFirstname"
+          label="Firstname"
+          onChange={[Function]}
+          placeholder="John"
           type="text"
         />
-        <input
-          name="registerSurname"
-          placeholder="Surname"
+        <Input
+          error=""
+          id="registerSurname"
+          label="Surname"
+          onChange={[Function]}
+          placeholder="Smith"
           type="text"
         />
       </div>
@@ -49,19 +67,28 @@ exports[`Register should render as expected 1`] = `
         <h2>
           Password
         </h2>
-        <input
-          name="registerPassword"
-          placeholder="Your password"
+        <Input
+          error=""
+          id="registerPassword"
+          label="Choose password"
+          onChange={[Function]}
+          placeholder="******"
           type="password"
+          value=""
         />
-        <input
-          name="registerRepeatPassword"
-          placeholder="Repeat your password"
+        <Input
+          error=""
+          id="registerRepeatPassword"
+          label="Repeat password"
+          onChange={[Function]}
+          placeholder="******"
           type="password"
+          value=""
         />
       </div>
     </div>
     <Button
+      onClick={[Function]}
       size="normal"
       uppercase={true}
     >

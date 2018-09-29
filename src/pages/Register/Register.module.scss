@@ -7,8 +7,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: $spacing-unit * 1;
 }
-
 .form {
   background: $primary-normal;
   padding: $spacing-unit;
@@ -16,9 +16,11 @@
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
-  margin: $spacing-unit*1;
   padding: $spacing-unit*2;
   align-items: center;
+  border-left: 6px solid;
+  border-right: 6px solid;
+  border-color: $primary-light;
   @include respond-to(small) {
     flex: none;
     min-width: 45%;
@@ -35,11 +37,17 @@
 .row {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  @include respond-to(medium) {
+    flex-direction: row;
+  }
   .column {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+    @include respond-to(medium) {
+      align-items: flex-start;
+    }
   }
 }

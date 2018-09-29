@@ -1,5 +1,5 @@
 //conf
-$darken-percent: 5%;
+$darken-percent: 10%;
 $lighten-percent: 4%;
 
 //color
@@ -14,6 +14,10 @@ $contrast-dark: darken($contrast-normal, $darken-percent);
 $special-normal: #edbb2d;
 $special-light: lighten($special-normal, $lighten-percent);
 $special-dark: darken($special-normal, $darken-percent);
+
+$error-normal: #dd2e2e;
+$error-light: lighten($error-normal, $lighten-percent);
+$error-dark: darken($error-normal, $darken-percent);
 //spacing
 $spacing-unit: 10px;
 $spacing-radius: 3px;

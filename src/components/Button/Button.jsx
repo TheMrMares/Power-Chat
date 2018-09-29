@@ -30,6 +30,7 @@ export class Button extends React.Component {
       target,
       to,
       uppercase,
+      ...restProps
     } = this.props
     let Component
 
@@ -52,6 +53,7 @@ export class Button extends React.Component {
         )}
         onClick={onClick}
         target={target}
+        {...restProps}
       >
         {children}
       </Component>

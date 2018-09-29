@@ -1,0 +1,27 @@
+@import '../../css/config.scss';
+
+.input {
+  border: none;
+  border-bottom: 1px solid;
+  border-color: $primary-light;
+  outline: none;
+  background: none;
+  margin: 0;
+  &:focus {
+    border-color: $special-normal;
+  }
+}
+.label {
+  display: flex;
+  flex-direction: column;
+  margin: $spacing-unit * 1;
+  position: relative;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+
+.error {
+  color: $error-normal;
+  max-width: 200px;
+}

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import Button from '../../components/Button'
 import firebase from '../../firebase'
 import styles from './Login.module.scss'
+import Input from '../../components/Input'
 
 export class Login extends React.Component {
   static propTypes = {
@@ -18,9 +19,9 @@ export class Login extends React.Component {
   }
 
   handleChange(evt) {
-    const { name, value } = evt.target
+    const { id, value } = evt.target
     this.setState({
-      [name]: value,
+      [id]: value,
     })
   }
 
@@ -38,15 +39,15 @@ export class Login extends React.Component {
         <form className={styles.form}>
           <h1>Login</h1>
           <h2>Email</h2>
-          <input
-            name="loginEmail"
+          <Input
+            id="loginEmail"
             onChange={this.handleChange}
             placeholder="Your email"
             type="email"
           />
           <h2>Password</h2>
-          <input
-            name="loginPassword"
+          <Input
+            id="loginPassword"
             onChange={this.handleChange}
             placeholder="Your password"
             type="password"
