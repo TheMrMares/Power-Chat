@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Immutable from 'immutable'
 import {
   Redirect,
   Route,
@@ -18,26 +17,17 @@ export class App extends React.Component {
   static propTypes = {
     getClearSignedUser: PropTypes.func,
     getUpdateSignedUser: PropTypes.func,
-  }
-
-  constructor() {
-    super()
-    this.state = {
-      loading: true,
-    }
+    isSigned: PropTypes.bool,
   }
 
   componentDidMount() {
     const { getClearSignedUser, getUpdateSignedUser } = this.props
-    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(async user => {
+    this.unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        await getUpdateSignedUser(user.uid)
+        getUpdateSignedUser(user.uid)
       } else {
-        getClearSignedUser(Immutable.Map())
+        getClearSignedUser()
       }
-      this.setState({
-        loading: false,
-      })
     })
   }
 
@@ -46,29 +36,26 @@ export class App extends React.Component {
   }
 
   render() {
-    const { loading } = this.state
+    const { isSigned } = this.props
     return (
-      <div>
-        {!loading && (
-          firebase.auth().currenUser
-            ? <Switch>
-                <Route component={Layout} exact path="/" />
-                <Redirect to="/" />
-              </Switch>
-            : <Switch>
-                <Route component={Register} exact path="/register" />
-                <Route component={Login} exact path="/login" />
-                <Redirect to="/login" />
-              </Switch>
-        )}
-        {loading && <p>Loading...</p>}
-      </div>
+      <React.Fragment>
+        {isSigned
+          ? <Switch>
+              <Route component={Layout} exact path="/" />
+              <Redirect to="/" />
+            </Switch>
+          : <Switch>
+              <Route component={Register} exact path="/register" />
+              <Route component={Login} exact path="/login" />
+              <Redirect to="/login" />
+            </Switch>}
+      </React.Fragment>
     )
   }
 }
 
 const mapState = ({ auth }) => ({
-  signedUser: auth.signedUser,
+  isSigned: auth.isSigned,
 })
 
 const mapDispatch = ({

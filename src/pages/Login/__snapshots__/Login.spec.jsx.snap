@@ -10,19 +10,23 @@ exports[`Login should render as expected 1`] = `
       Email
     </h2>
     <Input
+      error=""
       id="loginEmail"
       onChange={[Function]}
       placeholder="Your email"
       type="email"
+      value=""
     />
     <h2>
       Password
     </h2>
     <Input
+      error=""
       id="loginPassword"
       onChange={[Function]}
       placeholder="Your password"
       type="password"
+      value=""
     />
     <Button
       onClick={[Function]}

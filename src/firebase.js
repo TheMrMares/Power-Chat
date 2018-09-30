@@ -16,5 +16,6 @@ const config = {
 const firebase = firebaseApp.initializeApp(config)
 const firestore = firebaseApp.firestore()
 firestore.settings({ timestampsInSnapshots: true })
+firebase.auth().useDeviceLanguage()
 
 export default firebase

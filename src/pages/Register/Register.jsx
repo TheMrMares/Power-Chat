@@ -1,8 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import firebaseApp from 'firebase/app'
 import Button from '../../components/Button'
 import Input from '../../components/Input'
 import { isEmailValid } from '../../utils/formValidation'
+import firebase from '../../firebase'
 import styles from './Register.module.scss'
 
 export class Register extends React.Component {
@@ -25,74 +27,100 @@ export class Register extends React.Component {
   async handleSubmit(evt) {
     evt.preventDefault()
     evt.stopPropagation()
-    const { state } = this
+    const { history } = this.props
+    const {
+      registerEmail,
+      registerFirstname,
+      registerNickname,
+      registerPassword,
+      registerRepeatEmail,
+      registerRepeatPassword,
+      registerSurname,
+    } = this.state
     let overallCondition = false
-    if (!isEmailValid(state.registerEmail.data)) {
+    if (!isEmailValid(registerEmail.data)) {
       this.setState({
         registerEmail: {
-          data: state.registerEmail.data,
+          data: registerEmail.data,
           error: 'Your email is incorrect',
         },
       })
       overallCondition = true
     }
-    if (state.registerRepeatEmail.data !== state.registerEmail.data) {
+    if (registerRepeatEmail.data !== registerEmail.data) {
       this.setState({
         registerRepeatEmail: {
-          data: state.registerRepeatEmail.data,
-          error: 'Repeated email have to be same',
+          data: registerRepeatEmail.data,
+          error: 'Emails have to be the same',
         },
       })
       overallCondition = true
     }
-    if (!(state.registerNickname.data.length >= 6 && state.registerNickname.data.length <= 16)) {
+    if (!(registerNickname.data.length >= 6 && registerNickname.data.length <= 16)) {
       this.setState({
         registerNickname: {
-          data: state.registerNickname.data,
+          data: registerNickname.data,
           error: 'Nickname have to be min. 6 and max. 16 characters',
         },
       })
       overallCondition = true
     }
-    if (state.registerFirstname.data === '') {
+    if (registerFirstname.data === '') {
       this.setState({
         registerFirstname: {
-          data: state.registerFirstname.data,
+          data: registerFirstname.data,
           error: 'Firstname cannot be empty',
         },
       })
       overallCondition = true
     }
-    if (state.registerSurname.data === '') {
+    if (registerSurname.data === '') {
       this.setState({
         registerSurname: {
-          data: state.registerSurname.data,
+          data: registerSurname.data,
           error: 'Surname cannot be empty',
         },
       })
       overallCondition = true
     }
-    if (!(state.registerPassword.data.length >= 6 && state.registerPassword.data.length <= 24)) {
+    if (!(registerPassword.data.length >= 6 && registerPassword.data.length <= 24)) {
       this.setState({
         registerPassword: {
-          data: state.registerPassword.data,
+          data: registerPassword.data,
           error: 'Password have to be min. 6 and max. 16 characters',
         },
       })
       overallCondition = true
     }
-    if (state.registerPassword.data !== state.registerRepeatPassword.data) {
+    if (registerPassword.data !== registerRepeatPassword.data) {
       this.setState({
         registerRepeatPassword: {
-          data: state.registerRepeatPassword.data,
-          error: 'Passwords must be same',
+          data: registerRepeatPassword.data,
+          error: 'Passwords have to be the same',
         },
       })
       overallCondition = true
     }
 
-    if (overallCondition === true) {
-      return
+    if (overallCondition === true) return
+    try {
+      const signUp = await firebase
+        .auth()
+        .createUserWithEmailAndPassword(registerEmail.data, registerPassword.data)
+      await firebase.firestore()
+        .collection('users')
+        .doc(signUp.user.uid)
+        .set({
+          created: firebaseApp.firestore.FieldValue.serverTimestamp(),
+          email: registerEmail.data,
+          firstname: registerFirstname.data,
+          id: signUp.user.uid,
+          nickname: registerNickname.data,
+          surname: registerSurname.data,
+        })
+      history.push('/')
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -107,7 +135,15 @@ export class Register extends React.Component {
   }
 
   render() {
-    const { state } = this
+    const {
+      registerEmail,
+      registerFirstname,
+      registerNickname,
+      registerPassword,
+      registerRepeatEmail,
+      registerRepeatPassword,
+      registerSurname,
+    } = this.state
     return (
       <div className={styles.wrapper}>
         <form className={styles.form}>
@@ -116,74 +152,74 @@ export class Register extends React.Component {
             <div className={styles.column}>
               <h2>Email</h2>
               <Input
-                error={state.registerEmail.error}
+                error={registerEmail.error}
                 id="registerEmail"
                 label="Email"
                 onChange={this.handleChange}
                 placeholder="example@domain.com"
                 type="email"
-                value={state.registerEmail.data}
+                value={registerEmail.data}
               />
               <Input
-                error={state.registerRepeatEmail.error}
+                error={registerRepeatEmail.error}
                 id="registerRepeatEmail"
                 label="Repeat email"
                 onChange={this.handleChange}
                 placeholder="example@domain.com"
                 type="email"
-                value={state.registerRepeatEmail.data}
+                value={registerRepeatEmail.data}
               />
               <h2>User</h2>
               <Input
-                error={state.registerNickname.error}
+                error={registerNickname.error}
                 id="registerNickname"
                 label="Nickname"
                 onChange={this.handleChange}
                 placeholder="HappyNickname123"
                 type="text"
-                value={state.registerNickname.data}
+                value={registerNickname.data}
               />
             </div>
             <div className={styles.column}>
               <h2>Personal</h2>
               <Input
-                error={state.registerFirstname.error}
+                error={registerFirstname.error}
                 id="registerFirstname"
                 label="Firstname"
                 onChange={this.handleChange}
                 placeholder="John"
                 type="text"
-                value={state.registerFirstname.value}
+                value={registerFirstname.value}
               />
               <Input
-                error={state.registerSurname.error}
+                error={registerSurname.error}
                 id="registerSurname"
                 label="Surname"
                 onChange={this.handleChange}
                 placeholder="Smith"
                 type="text"
-                value={state.registerSurname.value}
+                value={registerSurname.value}
               />
             </div>
             <div className={styles.column}>
               <h2>Password</h2>
               <Input
-                error={state.registerPassword.error}
+                error={registerPassword.error}
                 id="registerPassword"
                 label="Choose password"
                 onChange={this.handleChange}
                 placeholder="******"
                 type="password"
-                value={state.registerPassword.data}
+                value={registerPassword.data}
               />
               <Input
-                error={state.registerRepeatPassword.error}
+                error={registerRepeatPassword.error}
                 id="registerRepeatPassword"
                 label="Repeat password"
                 onChange={this.handleChange}
                 placeholder="******"
                 type="password"
-                value={state.registerRepeatPassword.data}
+                value={registerRepeatPassword.data}
               />
             </div>
           </div>
